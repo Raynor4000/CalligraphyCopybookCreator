@@ -9,7 +9,13 @@
 //     new_font.setAttribute("src", "js/fonts/" + font + ".js")
 //   }
 // }
-
+function addCSS(doc,css) {
+    var new_css = document.createElement("link")
+    new_css.setAttribute("rel", "stylesheet")
+    new_css.setAttribute('type', 'text/css')
+    new_css.setAttribute("href", 'https://fonts.googleapis.com/css?family='+css+'&display=swap')
+    document.getElementsByTagName('head')[0].appendChild(new_css);
+}
 function createLines(doc, page_size) {
   doc.setLineWidth(0.15)
   doc.setDrawColor(200, 200, 200);
@@ -33,7 +39,7 @@ function drawData(doc, heading) {
 
 function start() {
   btn = document.getElementById('generate-book')
-  btn.addEventListener(("click"), function() {
+  btn.addEventListener("click", function() {
     generateCopyBook();
   });
 }
@@ -41,10 +47,43 @@ function insertProverb() {
   btn = document.getElementById('insert-proverb')
   heading = document.getElementById('heading')
   heading.value=todayProverb()
+  changePreviewFont()
   btn.addEventListener(("click"), function() {
       heading = document.getElementById('heading')
-      heading.value=randomProverb()
+      pool = document.getElementById('pool').value
+      heading.value=randomProverb(pool)
+      changePreviewFont()
   });
+}
+function changeStyle(){
+  e = document.getElementById('style')
+  e.addEventListener("change", function(){
+    previewFont()
+  });
+}
+function changePreviewFont(){
+  font = document.getElementById('style').value
+  preview=document.getElementById('preview')
+  text = document.getElementById('heading').value
+  var para = document.createElement("p");
+  para.textContent=text
+  para.className=font
+  preview.innerHTML=para.outerHTML
+}
+function previewFont(){
+  select = document.getElementById('style')
+  header = document.getElementById('heading')
+  select.addEventListener("change", function(){
+    changePreviewFont()
+    //url('https://fonts.googleapis.com/css?family=Mr+De+Haviland&display=swap');
+    //url('https://fonts.googleapis.com/css?family=Monsieur+La+Doulaise&display=swap');
+    //url('https://fonts.googleapis.com/css?family=Miss+Fajardose&display=swap');
+    //url('https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff&display=swap');
+    //url('https://fonts.googleapis.com/css?family=Mrs+Saint+Delafield&display=swap');
+  })
+  header.addEventListener("change", function(){
+    changePreviewFont()
+  })
 }
 //Creates PDF report
 function generateCopyBook() {
@@ -73,3 +112,4 @@ function generateCopyBook() {
 }
 insertProverb()
 start()
+previewFont()
