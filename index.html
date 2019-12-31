@@ -2,30 +2,30 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <title>Copy Book Generator</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Copy Book Generator</title>
 </head>
 
 <body>
-  <div class="container">
-    <div class="form-group">
-      <label for="heading">Heading Text</label>
-      <input type="text" id="heading" class='form-control' name="heading" value="" placeholder="Insert copy heading here.">
+    <div class="container">
+        <div class="form-group">
+            <label for="heading">Heading Text</label>
+            <input type="text" id="heading" class='form-control' name="heading" value="" placeholder="Insert copy heading here.">
+        </div>
+        <button type="button" id='insert-proverb' class="btn btn-info btn-lg btn-block">Insert Random Proverb</button>
+        <div class="form-group">
+            <label for="style">Heading Style</label>
+            <select class="custom-select" id='style' name='style'>
+                <option value="MonsieurLaDoulaise-Regular">Monsieur La Doulaise</option>
+                <option value="HerrVonMuellerhoff-Regular">Herr Von Muellerhoff</option>
+                <option value="MissFajardose-Regular">Miss Fajardose</option>
+                <option value="MrDeHaviland-Regular">Mr De Haviland</option>
+                <option value="MrsSaintDelafield-Regular">Mrs Saint Delafield</option>
+            </select>
+        </div>
+        <button type="button" id='generate-book' class="btn btn-primary btn-lg btn-block">Generate CopyBook</button>
     </div>
-    <button type="button" id='insert-proverb' class="btn btn-info btn-lg btn-block">Insert Random Proverb</button>
-    <div class="form-group">
-      <label for="style">Heading Style</label>
-      <select class="custom-select" id='style' name='style'>
-        <option value="MonsieurLaDoulaise-Regular">Monsieur La Doulaise</option>
-        <option value="HerrVonMuellerhoff-Regular">Herr Von Muellerhoff</option>
-        <option value="MissFajardose-Regular">Miss Fajardose</option>
-        <option value="MrDeHaviland-Regular">Mr De Haviland</option>
-        <option value="MrsSaintDelafield-Regular">Mrs Saint Delafield</option>
-      </select>
-    </div>
-    <button type="button" id='generate-book' class="btn btn-primary btn-lg btn-block">Generate CopyBook</button>
-  </div>
 </body>
 <script src="js/vendor/jspdf.min.js"></script>
 <script src="js/proverb.js"></script>
