@@ -31,26 +31,35 @@ function createSingleLines(doc, page_size) {
 
 function createTripleLines(doc, page_size) {
     doc.setLineWidth(0.15)
-    doc.setDrawColor(200, 200, 200);
+    doc.setDrawColor(240, 240, 240);
     y = 10
+    third = (1 / 3) * 10
     while (y <= page_size - 10) {
         y += 10
-        doc.setDrawColor(240, 240, 240);
-        doc.line(1, y - 5, 215, y - 5);
+        doc.line(1, y - third, 215, y - third);
+        doc.line(1, y - (third * 2), 215, y - (third * 2));
     }
     doc.setDrawColor(100, 100, 100);
 }
+
 function createSlantLines(doc, page_size) {
     doc.setLineWidth(0.15)
-    doc.setDrawColor(200, 200, 200);
+    doc.setDrawColor(240, 240, 240);
     y = 10
     while (y <= page_size - 10) {
         y += 10
-        doc.setDrawColor(240, 240, 240);
-        doc.line(1, y - 5, 215, y - 5);
+        adjacent = (0.781285627845389 * y)
+        doc.line(1, y, adjacent, 10);
+    }
+    x = (7.81285627)
+    while (x <= 215) {
+        adjacent = (0.781285627845389 * y)
+        doc.line(x, y, adjacent + x, 10);
+        x += (7.81285627)
     }
     doc.setDrawColor(100, 100, 100);
 }
+
 function createLines(doc, page_size) {
     ruling = document.getElementById('ruling').value
     switch (ruling) {
