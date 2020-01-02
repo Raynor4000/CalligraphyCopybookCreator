@@ -99,12 +99,19 @@ function start() {
 function insertProverb() {
     btn = document.getElementById('insert-proverb')
     heading = document.getElementById('heading')
-    heading.value = todayProverb()
+    pool = document.getElementById('pool')
+    heading.value = todayProverb(pool.value)
     changePreviewFont()
     btn.addEventListener(("click"), function() {
         heading = document.getElementById('heading')
-        pool = document.getElementById('pool').value
-        heading.value = randomProverb(pool)
+        pool = document.getElementById('pool')
+        heading.value = randomProverb(pool.value)
+        changePreviewFont()
+    });
+    pool.addEventListener(("change"), function() {
+        heading = document.getElementById('heading')
+        pool = document.getElementById('pool')
+        heading.value = todayProverb(pool.value)
         changePreviewFont()
     });
 }
@@ -131,11 +138,6 @@ function previewFont() {
     header = document.getElementById('heading')
     select.addEventListener("change", function() {
         changePreviewFont()
-            //url('https://fonts.googleapis.com/css?family=Mr+De+Haviland&display=swap');
-            //url('https://fonts.googleapis.com/css?family=Monsieur+La+Doulaise&display=swap');
-            //url('https://fonts.googleapis.com/css?family=Miss+Fajardose&display=swap');
-            //url('https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff&display=swap');
-            //url('https://fonts.googleapis.com/css?family=Mrs+Saint+Delafield&display=swap');
     })
     header.addEventListener("change", function() {
         changePreviewFont()
