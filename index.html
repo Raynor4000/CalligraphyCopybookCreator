@@ -5,10 +5,16 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="css/main.css">
-  <title>Copy Book Generator</title>
+  <title>Calligraphy Copybook Creator</title>
 </head>
 
 <body>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Welcome to Calligraphy Copybook Creator</h1>
+    <p class="lead">This free and open source work-in-progress tool can be used to generate copybook worksheets, used for improving handwriting and calligraphy skill. Find a copybook heading you like, then pick a suitabile writing style and ruling for your goals. When you're done, click the 'Generate CopyBook' button to download the printable PDF with using your parameters. Come back daily to keep up with the selected proverb from the pool.</p>
+  </div>
+</div>
   <div class="container-fluid">
     <div class="row">
       <nav class="col-md-3 d-none d-md-block bg-light sidebar">
@@ -60,16 +66,14 @@
           <label for="heading">Heading Text</label>
           <input type="text" id="heading" class='form-control' name="heading" value="" placeholder="Insert copy heading here.">
         </div>
-        <div class="display-3">
-          Preview
-        </div>
+        <p class="display-4">Preview:</p>
         <div class="container-fluid" id='preview'>
         </div>
       </div>
     </div>
   </div>
 </body>
-<script src="js/vendor/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
 <script src="js/proverb.js"></script>
 <script src="js/main.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
