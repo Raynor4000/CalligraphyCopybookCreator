@@ -20,7 +20,7 @@ function addCSS(doc, css) {
 function createSingleLines(doc, page_size) {
     doc.setLineWidth(0.15)
     doc.setDrawColor(200, 200, 200);
-    y = 10
+    y = 15
     doc.line(1, y, 215, y)
     while (y <= page_size - 5) {
         y += 10
@@ -32,7 +32,7 @@ function createSingleLines(doc, page_size) {
 function createTripleLines(doc, page_size) {
     doc.setLineWidth(0.15)
     doc.setDrawColor(240, 240, 240);
-    y = 10
+    y = 15
     third = (1 / 3) * 10
     while (y <= page_size - 10) {
         y += 10
@@ -45,17 +45,17 @@ function createTripleLines(doc, page_size) {
 function createSlantLines(doc, page_size, slant) {
     doc.setLineWidth(0.15)
     doc.setDrawColor(240, 240, 240);
-    y = 10
+    y = 15
     slant = (1/Math.tan(slant*Math.PI/180))
     while (y <= page_size - 10) {
         y += 10
         adjacent = (slant * y)
-        doc.line(1, y, adjacent, 10);
+        doc.line(1, y, adjacent, 15);
     }
     x = (slant*10)
     while (x <= 215) {
         adjacent = (slant * y)
-        doc.line(x, y, adjacent + x, 10);
+        doc.line(x, y, adjacent + x, 15);
         x += (slant*10)
     }
     doc.setDrawColor(100, 100, 100);
@@ -86,12 +86,31 @@ function createLines(doc, page_size) {
     }
 }
 
-function drawData(doc, heading) {
-    heading = doc.splitTextToSize(heading, 205)
-    y = 10
-    for (line of heading) {
+function drawData(doc, heading, strokes) {
+    heading_split = doc.splitTextToSize(heading, 205)
+    y = 15
+    for (line of heading_split) {
         doc.text(5, y, line)
         y += 10
+    }
+    if(strokes){
+        const principles={A:'7332',B:'73223',C:'3232',D:'3232323',E:'3235',F:'733232',G:'2327',H:'27332',I:'67',J:'623',K:'2732232',L:'2732',M:'73332',N:'733',O:'5',P:'732',Q:'632',R:'732232',S:'27',T:'73232',U:'6212',V:'623',W:'6233',X:'632',Y:'6214',Z:'6324',a:'33212',b:'422',c:'21232',d:'33212',e:'232',f:'4322',g:'3324',h:'4312',i:'212',j:'24',k:'43212',l:'42',m:'3131312',n:'31312',o:'3322',p:'21312',q:'332123',r:'2312',s:'2322',t:'2121',u:'21212',v:'3122',w:'212122',x:'3232',y:'3124',z:'314'}
+        doc.setFont('courier')
+        doc.setFontSize(6)
+        y=1.5
+        x=5
+        for(l of heading){
+            if(l in principles){
+                doc.text(x, y, l)
+                y+=1.6
+                for(p of principles[l]){
+                    doc.text(x, y, p)
+                    y+=1.6
+                }
+                y=1.5
+            }
+            x+=2.5;
+        }
     }
 }
 
@@ -168,7 +187,8 @@ function generateCopyBook() {
     doc.setFont(font)
         //add text
     var heading = document.getElementById('heading').value
-    drawData(doc, heading)
+    var strokes = document.getElementById('strokes').checked
+    drawData(doc, heading, strokes)
         // window.open(doc.output('bloburl',{
         //   filename:'CopyBook.pdf',
         // }));
