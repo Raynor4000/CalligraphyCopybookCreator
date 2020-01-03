@@ -42,20 +42,21 @@ function createTripleLines(doc, page_size) {
     doc.setDrawColor(100, 100, 100);
 }
 
-function createSlantLines(doc, page_size) {
+function createSlantLines(doc, page_size, slant) {
     doc.setLineWidth(0.15)
     doc.setDrawColor(240, 240, 240);
     y = 10
+    slant = (1/Math.tan(slant*Math.PI/180))
     while (y <= page_size - 10) {
         y += 10
-        adjacent = (0.781285627845389 * y)
+        adjacent = (slant * y)
         doc.line(1, y, adjacent, 10);
     }
-    x = (7.81285627)
+    x = (slant*10)
     while (x <= 215) {
-        adjacent = (0.781285627845389 * y)
+        adjacent = (slant * y)
         doc.line(x, y, adjacent + x, 10);
-        x += (7.81285627)
+        x += (slant*10)
     }
     doc.setDrawColor(100, 100, 100);
 }
@@ -66,16 +67,21 @@ function createLines(doc, page_size) {
         case "1":
             createSingleLines(doc, page_size);
             createTripleLines(doc, page_size);
-            createSlantLines(doc, page_size);
+            createSlantLines(doc, page_size,52);
             break;
         case "2":
             createSingleLines(doc, page_size);
             createTripleLines(doc, page_size);
+            createSlantLines(doc, page_size,55);
             break;
         case "3":
             createSingleLines(doc, page_size);
+            createTripleLines(doc, page_size);
             break;
         case "4":
+            createSingleLines(doc, page_size);
+            break;
+        case "5":
             break;
     }
 }
