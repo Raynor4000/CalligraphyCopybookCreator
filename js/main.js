@@ -5,6 +5,7 @@ function addCSS(doc, css) {
     new_css.setAttribute("href", 'https://fonts.googleapis.com/css?family=' + css + '&display=swap')
     document.getElementsByTagName('head')[0].appendChild(new_css);
 }
+
 function createSingleLine(doc, y) {
     doc.setLineWidth(0.15)
     doc.setDrawColor(200, 200, 200);
@@ -56,7 +57,7 @@ function createLine(doc, y, ruling) {
 }
 
 function drawStrokes(doc, line, y) {
-    const principles = { A: '7332', B: '73223', C: '3232', D: '3232323', E: '3235', F: '733232', G: '2327', H: '27332', I: '67', J: '623', K: '2732232', L: '2732', M: '73332', N: '733', O: '5', P: '732', Q: '632', R: '732232', S: '27', T: '73232', U: '6212', V: '623', W: '6233', X: '632', Y: '6214', Z: '6324', a: '33212', b: '422', c: '21232', d: '33212', e: '232', f: '4322', g: '3324', h: '4312', i: '212', j: '24', k: '43212', l: '42', m: '3131312', n: '31312', o: '3322', p: '21312', q: '332123', r: '2312', s: '2322', t: '2121', u: '21212', v: '3122', w: '212122', x: '3232', y: '3124', z: '314', 0:'32', 1:'1', 2:'23232', 3:'23223', 4:'233', 5:'2231', 6:'323', 7:'1321', 8:'2323', 9:'321'}
+    const principles = { A: '7332', B: '73223', C: '3232', D: '3232323', E: '3235', F: '733232', G: '2327', H: '27332', I: '67', J: '623', K: '2732232', L: '2732', M: '73332', N: '733', O: '5', P: '732', Q: '632', R: '732232', S: '27', T: '73232', U: '6212', V: '623', W: '6233', X: '632', Y: '6214', Z: '6324', a: '33212', b: '422', c: '21232', d: '33212', e: '232', f: '4322', g: '3324', h: '4312', i: '212', j: '24', k: '43212', l: '42', m: '3131312', n: '31312', o: '3322', p: '21312', q: '332123', r: '2312', s: '2322', t: '2121', u: '21212', v: '3122', w: '212122', x: '3232', y: '3124', z: '314', 0: '32', 1: '1', 2: '23232', 3: '23223', 4: '233', 5: '2231', 6: '323', 7: '1321', 8: '2323', 9: '321' }
     doc.setFont('courier')
     doc.setFontSize(6)
     x = 5
@@ -81,6 +82,7 @@ function drawStrokes(doc, line, y) {
 function drawData(doc, heading, strokes, font, ruling) {
     heading_split = doc.splitTextToSize(heading, 205)
     y = 0
+    line_y = []
     for (line of heading_split) {
         if (strokes) {
             y += 2
@@ -90,12 +92,15 @@ function drawData(doc, heading, strokes, font, ruling) {
         createLine(doc, y, "4");
         doc.setFont(font[0])
         doc.setFontSize(font[1]);
-        doc.text(5, y, line)
+        line_y.push(y)
     }
     y += 10
     while (y < 280) {
         createLine(doc, y, ruling)
         y += 10
+    }
+    for(i in line_y){
+        doc.text(5, line_y[i], heading_split[i])
     }
 }
 
@@ -134,13 +139,13 @@ function changeStyle() {
 }
 
 function changePreviewFont() {
-    font = document.getElementById('style').value
-    preview = document.getElementById('preview')
-    text = document.getElementById('heading').value
+    font = document.getElementById('style').value;
+    preview = document.getElementById('preview');
+    text = document.getElementById('heading').value;
     var para = document.createElement("p");
-    para.textContent = text
-    para.className = font
-    preview.innerHTML = para.outerHTML
+    para.textContent = text;
+    para.className = font;
+    preview.innerHTML = para.outerHTML;
 }
 
 function previewFont() {
