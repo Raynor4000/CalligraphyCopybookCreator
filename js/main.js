@@ -6,23 +6,26 @@ function addCSS(doc, css) {
     document.getElementsByTagName('head')[0].appendChild(new_css);
 }
 
-function createSingleLine(doc, y) {
+function createSingleLine(doc, y, darkness) {
     doc.setLineWidth(0.15)
-    doc.setDrawColor(200, 200, 200);
+    var c = 150 + darkness
+    doc.setDrawColor(c, c, c);
     doc.line(1, y, 215, y)
 }
 
-function createTripleLine(doc, y) {
+function createTripleLine(doc, y, darkness) {
     doc.setLineWidth(0.15)
-    doc.setDrawColor(240, 240, 240);
+    var c = 190 + darkness
+    doc.setDrawColor(c, c, c);
     third = (1 / 3) * 10
     doc.line(1, y - third, 215, y - third);
     doc.line(1, y - (third * 2), 215, y - (third * 2));
 }
 
-function createSlantLine(doc, y, slant) {
+function createSlantLine(doc, y, slant, darkness) {
     doc.setLineWidth(0.15)
-    doc.setDrawColor(240, 240, 240);
+    var c = 190 + darkness
+    doc.setDrawColor(c, c, c);
     slant = (1 / Math.tan(slant * Math.PI / 180))
     x = 1
     while (x <= 215) {
@@ -32,24 +35,24 @@ function createSlantLine(doc, y, slant) {
     }
 }
 
-function createLine(doc, y, ruling) {
+function createLine(doc, y, ruling, darkness) {
     switch (ruling) {
         case "1":
-            createTripleLine(doc, y);
-            createSlantLine(doc, y, 52);
-            createSingleLine(doc, y);
+            createTripleLine(doc, y, darkness);
+            createSlantLine(doc, y, 52, darkness);
+            createSingleLine(doc, y, darkness);
             break;
         case "2":
-            createTripleLine(doc, y);
-            createSlantLine(doc, y, 55);
-            createSingleLine(doc, y);
+            createTripleLine(doc, y, darkness);
+            createSlantLine(doc, y, 55, darkness);
+            createSingleLine(doc, y, darkness);
             break;
         case "3":
-            createSingleLine(doc, y);
-            createTripleLine(doc, y);
+            createSingleLine(doc, y, darkness);
+            createTripleLine(doc, y, darkness);
             break;
         case "4":
-            createSingleLine(doc, y);
+            createSingleLine(doc, y, darkness);
             break;
         case "5":
             break;
@@ -79,7 +82,7 @@ function drawStrokes(doc, line, y) {
     return (max_y - 1.6);
 }
 
-function drawData(doc, heading, strokes, font, ruling) {
+function drawData(doc, heading, strokes, font, ruling, darkness) {
     heading_split = doc.splitTextToSize(heading, 205)
     y = 0
     line_y = []
@@ -89,17 +92,17 @@ function drawData(doc, heading, strokes, font, ruling) {
             y = drawStrokes(doc, line, y) - 2
         }
         y += 10
-        createLine(doc, y, "4");
+        createLine(doc, y, "4", darkness);
         doc.setFont(font[0])
         doc.setFontSize(font[1]);
         line_y.push(y)
     }
     y += 10
     while (y < 280) {
-        createLine(doc, y, ruling)
+        createLine(doc, y, ruling, darkness)
         y += 10
     }
-    for(i in line_y){
+    for (i in line_y) {
         doc.text(5, line_y[i], heading_split[i])
     }
 }
@@ -173,7 +176,8 @@ function generateCopyBook() {
     var heading = document.getElementById('heading').value
     var strokes = document.getElementById('strokes').checked
     var ruling = document.getElementById('ruling').value
-    drawData(doc, heading, strokes, [font, 25], ruling)
+    var darkness = 100 - parseInt(document.getElementById('darkness').value)
+    drawData(doc, heading, strokes, [font, 25], ruling, darkness)
     doc.save('CopyBook.pdf');
 }
 insertProverb()
