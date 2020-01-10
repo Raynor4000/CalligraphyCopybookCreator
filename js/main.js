@@ -91,7 +91,7 @@ function drawData(doc, heading, strokes, font, ruling, darkness) {
             y += 2
             y = drawStrokes(doc, line, y) - 2
         }
-        y += 15.5
+        y += 10
         createLine(doc, y, "4", darkness);
         doc.setFont(font[0])
         doc.setFontSize(font[1]);
