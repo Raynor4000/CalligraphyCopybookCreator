@@ -17,7 +17,7 @@ function createTripleLine(doc, y, darkness) {
     doc.setLineWidth(0.15)
     var c = 190 + darkness
     doc.setDrawColor(c, c, c);
-    third = (1 / 3) * 15.5
+    third = (1 / 3) * 15
     doc.line(1, y - third, 215, y - third);
     doc.line(1, y - (third * 2), 215, y - (third * 2));
 }
@@ -29,8 +29,8 @@ function createSlantLine(doc, y, slant, darkness) {
     slant = (1 / Math.tan(slant * Math.PI / 180))
     x = 1
     while (x <= 215) {
-        adjacent = (slant * 15.5)
-        doc.line(x, y, adjacent + x - 1, y - 15.5);
+        adjacent = (slant * 15)
+        doc.line(x, y, adjacent + x - 1, y - 15);
         x += 5
     }
 }
@@ -97,10 +97,10 @@ function drawData(doc, heading, strokes, font, ruling, darkness) {
         doc.setFontSize(font[1]);
         line_y.push(y)
     }
-    y += 15.5
+    y += 15
     while (y < 280) {
         createLine(doc, y, ruling, darkness)
-        y += 15.5
+        y += 15
     }
     for (i in line_y) {
         doc.text(5, line_y[i], heading_split[i])
