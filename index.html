@@ -20,15 +20,15 @@
   </div>
 </div>
   <div class="container-fluid">
-    <div class="row">
-      <nav class="col-md-3 d-none d-md-block bg-light sidebar">
-        <div class="sidebar-sticky sticky-top sticky-offset">
+    <div class="form-row">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
           <ul class="nav flex-column">
             <li>
               <div class="form-group">
                 <label for="style">Proverb Pool</label>
                 <select class="custom-select" id='pool' name='pool'>
-                  <option value="proverbs">English Proverbs</option>
+                  <option selected="selected" value="proverbs">English Proverbs</option>
                   <option value="service">Public Service</option>
                   <option value="pangrams">Pangrams</option>
                   <option value="drills">Spencerian Drills</option>
@@ -37,12 +37,12 @@
               </div>
             </li>
             <li>
-              <button type="button" id='insert-proverb' class="btn btn-info btn-lg btn-block">Insert Random Heading</button></li>
+              <button type="button" id='insert-proverb' class="btn btn-info btn-sm btn-block">Insert Random Heading</button></li>
             <li>
               <div class="form-group">
                 <label for="style">Heading Style</label>
                 <select class="custom-select" id='style' name='style'>
-                  <option value="MonsieurLaDoulaise-Regular">Monsieur La Doulaise</option>
+                  <option selected="selected" value="MonsieurLaDoulaise-Regular">Monsieur La Doulaise</option>
                   <option value="HerrVonMuellerhoff-Regular">Herr Von Muellerhoff</option>
                   <option value="MissFajardose-Regular">Miss Fajardose</option>
                   <option value="MrDeHaviland-Regular">Mr De Haviland</option>
@@ -54,7 +54,7 @@
               <div class="form-group">
                 <label for="style">Ruling Style</label>
                 <select class="custom-select" id='ruling' name='ruling'>
-                  <option value=1>Spencerian (52 degree guide)</option>
+                  <option selected="selected" value=1>Spencerian (52 degree guide)</option>
                   <option value=2>Copperplate (55 degree guide)</option>
                   <option value=3>Triple</option>
                   <option value=4>Single</option>
@@ -64,9 +64,15 @@
             </li>
             <li>
               <div class="form-group">
-                <label for="darkness">Line Darkness </label>
-                <input type="range" class="form-control-range" id="darkness" value=50>
-                </div>
+                <label for="darkness">Ruling Lineweight</label>
+                <select class="custom-select" id='darkness' name='darkness'>
+                  <option value=0>Very Light</option>
+                  <option value=25>Light</option>
+                  <option selected="selected" value=50>Medium</option>
+                  <option value=75>Dark</option>
+                  <option value=100>Very Dark</option>
+                </select>
+              </div>
             </li>
             <li>
                 <div class="custom-control custom-switch">
@@ -75,12 +81,12 @@
                 </div>
             </li>
             <li>
-              <button type="button" id='generate-book' class="btn btn-primary btn-lg btn-block">Generate CopyBook</button>
+              <button type="button" id='generate-book' class="btn btn-primary btn-sm btn-block">Generate CopyBook</button>
             </li>
           </ul>
         </div>
       </nav>
-      <div class="col-9">
+      <main class="col-9">
         <div class="form-group">
           <label for="heading">Heading Text</label>
           <textarea id="heading" class='form-control' name="heading" placeholder="Insert copy heading here." rows="3"></textarea>
@@ -88,7 +94,7 @@
         <p class="display-5 bg-light">Preview:</p>
         <div class="container-fluid" id='preview'>
         </div>
-      </div>
+      </main>
     </div>
   </div>
 </body>
