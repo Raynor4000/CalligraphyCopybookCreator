@@ -173,11 +173,15 @@ function generateCopyBook() {
     }
     var doc = new jsPDF(doc_settings);
     var font = document.getElementById('style').value
-    var heading = document.getElementById('heading').value
+    var heading = document.getElementById('heading').value.split("\n")
     var strokes = document.getElementById('strokes').checked
     var ruling = document.getElementById('ruling').value
     var darkness = 100 - parseInt(document.getElementById('darkness').value)
-    drawData(doc, heading, strokes, [font, 25], ruling, darkness)
+    for( h  of heading){
+        drawData(doc, h, strokes, [font, 25], ruling, darkness)
+        doc.addPage()
+    }
+    doc.deletePage(heading.length+1)
     doc.save('CopyBook.pdf');
 }
 insertProverb()
