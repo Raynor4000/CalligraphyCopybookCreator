@@ -97,6 +97,38 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+@font-face {
+  font-family: "SpencerianLadysHandSW-Regular";
+  src: url("./fonts/SpencerianLadysHandSW.eot"); /* IE9 Compat Modes */
+  src: url("./fonts/SpencerianLadysHandSW.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("./fonts/SpencerianLadysHandSW.otf") format("opentype"), /* Open Type Font */
+    url("./fonts/SpencerianLadysHandSW.svg") format("svg"), /* Legacy iOS */
+    url("./fonts/SpencerianLadysHandSW.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("./fonts/SpencerianLadysHandSW.woff") format("woff"), /* Modern Browsers */
+    url("./fonts/SpencerianLadysHandSW.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SpencerianScriptSW-Regular";
+  src: url("./fonts/SpencerianScriptSW.eot"); /* IE9 Compat Modes */
+  src: url("./fonts/SpencerianScriptSW.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("./fonts/SpencerianScriptSW.otf") format("opentype"), /* Open Type Font */
+    url("./fonts/SpencerianScriptSW.svg") format("svg"), /* Legacy iOS */
+    url("./fonts/SpencerianScriptSW.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("./fonts/SpencerianScriptSW.woff") format("woff"), /* Modern Browsers */
+    url("./fonts/SpencerianScriptSW.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
+.SpencerianScriptSW-Regular{
+font-family: 'SpencerianScriptSW-Regular', cursive;
+font-size: 5rem;
+}
+.SpencerianLadysHandSW-Regular{
+font-family: 'SpencerianLadysHandSW-Regular', cursive;
+font-size: 5rem;
+}
 .MonsieurLaDoulaise-Regular{
 font-family: 'Monsieur La Doulaise', cursive;
 font-size: 5rem;
