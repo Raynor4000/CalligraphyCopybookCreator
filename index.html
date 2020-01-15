@@ -13,10 +13,11 @@
 </head>
 
 <body>
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid" id='jumbo-msg'>
   <div class="container">
     <h1 class="display-5">Welcome to <span class='MonsieurLaDoulaise-Regular'>C</span>alligraphy <span class='MonsieurLaDoulaise-Regular'>C</span>opybook <span class='MonsieurLaDoulaise-Regular'>C</span>reator</h1>
     <p class="lead">This free and open source work-in-progress tool can be used to generate copybook worksheets, used for improving handwriting and calligraphy skill. Find a copybook heading you like, then pick a suitabile writing style and ruling for your goals. When you're done, click the 'Generate CopyBook' button to download the printable PDF with your selected parameters. Come back daily to keep up with the selected proverb from the pool.</p>
+    <button type="button" name="button" class='btn btn-info' id='dismiss-jumbotron'>Dismiss</button>
   </div>
 </div>
   <div class="container-fluid">
@@ -100,11 +101,12 @@
     </div>
   </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
 <script src="js/proverb.js"></script>
+<script src="js/worksheet.js"></script>
 <script src="js/main.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
 <script src="js/fonts/SpencerianScriptSW-Regular.js" defer></script>
 <script src="js/fonts/SpencerianLadysHandSW-Regular.js" defer></script>
 <script src="js/fonts/HerrVonMuellerhoff-Regular.js" defer></script>
@@ -112,8 +114,6 @@
 <script src="js/fonts/MonsieurLaDoulaise-Regular.js" defer></script>
 <script src="js/fonts/MrDeHaviland-Regular.js" defer></script>
 <script src="js/fonts/MrsSaintDelafield-Regular.js" defer></script>
-<link href="https://fonts.googleapis.com/css?family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Mr+De+Haviland&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Mr+De+Haviland&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Miss+Fajardose&display=swap" rel="stylesheet">
