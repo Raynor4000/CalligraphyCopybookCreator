@@ -83,8 +83,8 @@ function drawStrokes(doc, line, y) {
     return (max_y - 1.6);
 }
 
-function drawData(doc, heading, strokes, font, ruling, darkness) {
-    heading_split = doc.splitTextToSize(heading, 205)
+function drawData(doc, heading, strokes, font, ruling, darkness, font_cutoff) {
+    heading_split = doc.splitTextToSize(heading, font_cutoff)
     y = 0
     line_y = []
     for (line of heading_split) {
@@ -178,8 +178,17 @@ function generateCopyBook() {
     var strokes = document.getElementById('strokes').checked
     var ruling = document.getElementById('ruling').value
     var darkness = 100 - parseInt(document.getElementById('darkness').value)
+    var font_cutoff = {
+        'SpencerianScriptSW-Regular':185,
+        'SpencerianLadysHandSW-Regular':185,
+        'MonsieurLaDoulaise-Regular':200,
+        'HerrVonMuellerhoff-Regular':200,
+        'MissFajardose-Regular':200,
+        'MrDeHaviland-Regular':200,
+        'MrsSaintDelafield-Regular':200,
+    }
     for( h  of heading){
-        drawData(doc, h, strokes, [font, 25], ruling, darkness)
+        drawData(doc, h, strokes, [font, 25], ruling, darkness, font_cutoff[font])
         doc.addPage()
     }
     doc.deletePage(heading.length+1)
