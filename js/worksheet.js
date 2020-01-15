@@ -76,7 +76,7 @@ function drawStrokes(doc, line, y) {
 }
 
 function drawData(doc, heading, strokes, font, ruling, darkness, font_cutoff) {
-    heading_split = doc.splitTextToSize(heading, 205)
+    heading_split = doc.splitTextToSize(heading, font_cutoff)
     y = 0
     line_y = []
     for (line of heading_split) {
@@ -117,13 +117,13 @@ function generateCopyBook() {
     var ruling = document.getElementById('ruling').value
     var darkness = 100 - parseInt(document.getElementById('darkness').value)
     var font_cutoff = {
-        'SpencerianScriptSW-Regular':185,
-        'SpencerianLadysHandSW-Regular':185,
+        'SpencerianScriptSW-Regular':180,
+        'SpencerianLadysHandSW-Regular':180,
         'MonsieurLaDoulaise-Regular':200,
-        'HerrVonMuellerhoff-Regular':200,
-        'MissFajardose-Regular':200,
-        'MrDeHaviland-Regular':200,
-        'MrsSaintDelafield-Regular':200,
+        'HerrVonMuellerhoff-Regular':225,
+        'MissFajardose-Regular':275,
+        'MrDeHaviland-Regular':225,
+        'MrsSaintDelafield-Regular':215,
     }
     for( h  of heading){
         drawData(doc, h, strokes, [font, 25], ruling, darkness, font_cutoff[font])
