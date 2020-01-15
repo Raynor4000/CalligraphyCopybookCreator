@@ -70,7 +70,7 @@ function drawStrokes(doc, line, y) {
             max_y = Math.max(y, max_y)
             y = init_y
         }
-        x += 2.5;
+        x += 1.8;
     }
     return (max_y - 1.6);
 }
